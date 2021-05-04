@@ -13,7 +13,7 @@ public class StringCalculator {
 		}
 		else
 		{			
-			String numberlist[]= getNumberList(number);
+			String numberlist[]= number.split(",");
 			int sum = 0;
 			
 			for(int i =0;i<numberlist.length;i++)
@@ -22,36 +22,11 @@ public class StringCalculator {
 				sum += nextNumber ;
 				
 			}
-		return sum;
+			return sum;
 		}
 		
 	}
-	private static String[] getNumberList(String text)
-	{
-		if (text.startsWith("//"))
-		{
-			return splitUsingCustomDelimiter(text);
-		}
-		else
-		{
-			return splitUsingDefaultDelimiter(text);
-		}
-	}
-	private static String[] splitUsingCustomDelimiter(String text)
-	{
-		
-		Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(text);
-		m.matches();
-		String customDelimiter= m.group(1);
-		String numbers= m.group(2);
-		return numbers.split(Pattern.quote(customDelimiter));
-
-		
-	}
-	private static String[] splitUsingDefaultDelimiter(String text)
-	{
-		return text.split(",|\n");
-	}
+	
 
 }
 
