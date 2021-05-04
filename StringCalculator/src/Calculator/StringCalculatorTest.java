@@ -30,4 +30,16 @@ public class StringCalculatorTest {
 		assertEquals(6,StringCalculator.Add("1,2,3"));
 	}
 	
+	@Test
+	public void shouldAcceptNewLineAsValidDelimeter()
+	{
+		assertEquals(6,StringCalculator.Add("1,2\n3"));
+	}
+	
+	@Test
+	public void shouldAcceptCustomDelimiterSyntax()
+	{
+		assertEquals(3,StringCalculator.Add("//;\n1;2"));
+	}
+	
 }

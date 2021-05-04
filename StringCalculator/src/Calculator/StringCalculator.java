@@ -1,5 +1,8 @@
 package Calculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
 	public static int Add(String number)
@@ -10,7 +13,7 @@ public class StringCalculator {
 		}
 		else
 		{			
-			String numberlist[]= number.split(",|\n");
+			String numberlist[]= getNumberList(number);
 			int sum = 0;
 			
 			for(int i =0;i<numberlist.length;i++)
@@ -22,6 +25,32 @@ public class StringCalculator {
 		return sum;
 		}
 		
+	}
+	private static String[] getNumberList(String text)
+	{
+		if (text.startsWith("//"))
+		{
+			return splitUsingCustomDelimiter(text);
+		}
+		else
+		{
+			return splitUsingDefaultDelimiter(text);
+		}
+	}
+	private static String[] splitUsingCustomDelimiter(String text)
+	{
+		
+		Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(text);
+		m.matches();
+		String customDelimiter= m.group(1);
+		String numbers= m.group(2);
+		return numbers.split(Pattern.quote(customDelimiter));
+
+		
+	}
+	private static String[] splitUsingDefaultDelimiter(String text)
+	{
+		return text.split(",|\n");
 	}
 
 }
