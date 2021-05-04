@@ -13,7 +13,7 @@ public class StringCalculator {
 		}
 		else
 		{			
-			String numberlist[]= number.split(",");
+			String numberlist[]= number.split(",|\n");
 			int sum = 0;
 			
 			for(int i =0;i<numberlist.length;i++)

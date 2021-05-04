@@ -2,7 +2,6 @@ package Calculator;
 
 import static org.junit.Assert.*;
 
-
 import org.junit.Test;
 
 public class StringCalculatorTest {
@@ -31,5 +30,10 @@ public class StringCalculatorTest {
 		assertEquals(6,StringCalculator.Add("1,2,3"));
 	}
 	
+	@Test
+	public void shouldAcceptNewLineAsValidDelimeter()
+	{
+		assertEquals(6,StringCalculator.Add("1,2\n3"));
+	}
 
 }
