@@ -1,5 +1,6 @@
 package Calculator;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,16 +15,28 @@ public class StringCalculator {
 		else
 		{			
 			String numberlist[]= getnumberList(number);
+			ArrayList<Integer> negativeNumbers = new ArrayList<Integer>();
 			int sum = 0;
 			
 			for(int i =0;i<numberlist.length;i++)
 			{
-				int nextNumber= Integer.parseInt(numberlist[i]);			
+				int nextNumber= Integer.parseInt(numberlist[i]);
+				if(nextNumber< 1001)
 				sum += nextNumber ;
 				
+				if (nextNumber<0)					
+				negativeNumbers.add(nextNumber);
 			}
-			return sum;
-		}
+			
+			if (negativeNumbers.size() > 0)
+			{
+				throw new RuntimeException("Negative not allowed: " + negativeNumbers);
+			}
+			else
+			{	
+				return sum;
+			}		
+			}
 		
 	}
 	private static String[] getnumberList(String text)

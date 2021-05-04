@@ -2,6 +2,7 @@ package Calculator;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Test;
 
 public class StringCalculatorTest {
@@ -47,5 +48,36 @@ public class StringCalculatorTest {
 	public void customDelimiterCouldBeAlsoARegExpSpecialChar()
 	{
 		assertEquals(6,StringCalculator.Add("//.\n1.2.3"));
+	}
+	
+	@Test
+	public void shouldRaisExceptionOnNegatives()
+	{
+		try
+		{
+			StringCalculator.Add("-1,2,3");
+			fail("Exception expected."); 
+		}
+		catch(RuntimeException ex)
+		{
+	
+		}
+	
+	}
+	
+	@Test
+	public void exceptionMessageShouldContainNegativeNumbers()
+	{
+		try
+		{
+			StringCalculator.Add("-1,-2,3");
+			fail("Exception expected."); 
+		}
+		catch(RuntimeException ex)
+		{
+			
+		assertEquals("Negative not allowed: [-1, -2]",ex.getMessage());	
+		}
+	
 	}
 }
