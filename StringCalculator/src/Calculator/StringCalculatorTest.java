@@ -2,7 +2,6 @@ package Calculator;
 
 import static org.junit.Assert.*;
 
-
 import org.junit.Test;
 
 public class StringCalculatorTest {
@@ -85,6 +84,13 @@ public class StringCalculatorTest {
 	public void shouldNotAddNumberGreaterThan1000()
 	{
 		assertEquals(4,StringCalculator.Add("1,3,1001"));
+	
+	}
+	@Test
+	public void checkForDelimiterOfMultipleLength()
+	{
+		
+		assertEquals(6,StringCalculator.Add("//;;\n1;;2;;3"));
 	
 	}
 }

@@ -53,7 +53,7 @@ public class StringCalculator {
 	private static String[] splitUsingCustomDelimiter(String text)
 	{
 		
-		Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+		Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(text);
 		m.matches();
 		String customDelimiter= m.group(1);
 		String numbers= m.group(2);
