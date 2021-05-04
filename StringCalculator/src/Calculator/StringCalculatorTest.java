@@ -80,4 +80,11 @@ public class StringCalculatorTest {
 		}
 	
 	}
+	
+	@Test
+	public void shouldNotAddNumberGreaterThan1000()
+	{
+		assertEquals(4,StringCalculator.Add("1,3,1001"));
+	
+	}
 }
